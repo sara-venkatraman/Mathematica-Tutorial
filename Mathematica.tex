@@ -3,7 +3,7 @@
 % --- Set document class ---
 
 % Remove "handout" when presenting to include pauses
-\documentclass[dvipsnames, handout]{beamer}
+\documentclass[dvipsnames]{beamer}
 \usetheme{default}
 
 % Make content that is hidden by pauses "transparent"
@@ -212,11 +212,11 @@ I think Mathematica is less useful for:
 {\small A Bayesian approach to regression:
 \begin{itemize}
 \item Consider the model $\b Y = \b X\bg\beta + \bg\varepsilon$, with $\bg\varepsilon \sim N(\b 0,\sigma^2 \b I_n)$. 
-\item Put a $N(\bg\beta_0,\sigma^2\b V_0)$ prior on $\bg\beta$, where $\b V_0$ is some p.s.d. matrix.
+\item Put a $N(\bg\beta_0,\sigma^2\b V_0)$ prior on $\bg\beta$, where $\b V_0$ is some p.s.d. matrix. \pause
 \item What should $\b V_0$ be? Let's say $\b V_0 = g(\b X^T \b X)^{-1}$, for some $g>0$
 \item Then the posterior mean of $\bg\beta$ is:
 $$\E(\bg\beta|\b Y,\sigma^2) = \frac{1}{1+g}\bg\beta_0 + \frac{g}{1+g}\bg{\hat\beta}$$
-where $\bg{\hat\beta}$ is the usual least-squares estimate!
+where $\bg{\hat\beta}$ is the usual least-squares estimate! \pause
 \item \textbf{What I want to know: How do we choose $g$?}
 \end{itemize}}
 \end{frame}
@@ -267,7 +267,10 @@ Now all I need to do is prove that this quantity is positive.
 \begin{center}
 {\Large\color{titleText} Thank you for listening!\\[2em]}
 
-All the things Mathematica can do are\\ documented here, with examples:\\ {\color{RoyalBlue}\url{https://reference.wolfram.com/language/}}
+All the things Mathematica can do are\\ documented here, with examples:\\ {\color{RoyalBlue}\url{https://reference.wolfram.com/language/}} \\[2em]
+
+These slides and the Mathematica demo script are online at:\\
+{\color{RoyalBlue}\url{https://github.com/sara-venkatraman}\\ \url{/Mathematica-Tutorial}}
 \end{center}
 \end{frame}
 

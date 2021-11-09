@@ -1,0 +1,276 @@
+% --- LaTeX Presentation Template - S. Venkatraman ---
+
+% --- Set document class ---
+
+% Remove "handout" when presenting to include pauses
+\documentclass[dvipsnames, handout]{beamer}
+\usetheme{default}
+
+% Make content that is hidden by pauses "transparent"
+\setbeamercovered{transparent}
+
+% Import package for indicator function symbol
+\usepackage{dsfont}
+
+% --- Slide layout settings ---
+
+% Set line spacing
+\renewcommand{\baselinestretch}{1.15}
+
+% Set left and right text margins
+\setbeamersize{text margin left=12mm, text margin right=12mm}
+
+% Add slide numbers in bottom right corner
+\setbeamertemplate{footline}[frame number]
+
+% Remove navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% Allow local line spacing changes
+\usepackage{setspace}
+
+% Change itemized list bullets to circles
+\setbeamertemplate{itemize item}{$\bullet$}
+\setbeamertemplate{itemize subitem}{$\circ$}
+
+% --- Color and font settings ---
+
+\usepackage{xcolor}
+
+% Slide title background color
+\definecolor{background}{HTML}{edebe4}
+
+% Slide title text color
+\definecolor{titleText}{HTML}{B40404}
+
+% Other possible color schemes
+
+% - Light green/dark green -
+%\definecolor{background}{HTML}{e4ede4}
+%\definecolor{titleText}{HTML}{2e592f}
+
+% - Light blue/dark blue -
+%\definecolor{background}{HTML}{d5d9e8}
+%\definecolor{titleText}{HTML}{2d375e}
+
+% - Beige/dark blue -
+%\definecolor{background}{HTML}{edebe4}
+%\definecolor{titleText}{HTML}{2d3375}
+
+% Set colors
+\setbeamercolor{frametitle}{bg=background, fg=titleText}
+\setbeamercolor{subtitle}{fg=titleText}
+
+% Set font sizes for frame title and subtitle
+\setbeamerfont{frametitle}{size=\fontsize{15}{16}}
+\setbeamerfont{framesubtitle}{size=\small}
+
+% --- Math/Statistics commands ---
+
+% Add a reference number to a single line of a multi-line equation
+% Usage: "\numberthis\label{labelNameHere}" in an align or gather environment
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+% Shortcut for bold text in math mode, e.g. $\b{X}$
+\let\b\mathbf
+
+% Shortcut for bold Greek letters, e.g. $\bg{\beta}$
+\let\bg\boldsymbol
+
+% Shortcut for calligraphic script, e.g. %\mc{M}$
+\let\mc\mathcal
+
+% \mathscr{(letter here)} is sometimes used to denote vector spaces
+\usepackage[mathscr]{euscript}
+
+% Convergence: right arrow with optional text on top
+% E.g. $\converge[p]$ for converges in probability
+\newcommand{\converge}[1][]{\xrightarrow{#1}}
+
+% Weak convergence: harpoon symbol with optional text on top
+% E.g. $\wconverge[n\to\infty]$
+\newcommand{\wconverge}[1][]{\stackrel{#1}{\rightharpoonup}}
+
+% Equality: equals sign with optional text on top
+% E.g. $X \equals[d] Y$ for equality in distribution
+\newcommand{\equals}[1][]{\stackrel{\smash{#1}}{=}}
+
+% Normal distribution: arguments are the mean and variance
+% E.g. $\normal{\mu}{\sigma}$
+\newcommand{\normal}[2]{\mathcal{N}\left(#1,#2\right)}
+
+% Uniform distribution: arguments are the left and right endpoints
+% E.g. $\unif{0}{1}$
+\newcommand{\unif}[2]{\text{Uniform}(#1,#2)}
+
+% Independent and identically distributed random variables
+% E.g. $ X_1,...,X_n \iid \normal{0}{1}$
+\newcommand{\iid}{\stackrel{\smash{\text{iid}}}{\sim}}
+
+% Sequences (this shortcut is mostly to reduce finger strain for small hands)
+% E.g. to write $\{A_n\}_{n\geq 1}$, do $\bk{A_n}{n\geq 1}$
+\newcommand{\bk}[2]{\{#1\}_{#2}}
+
+% Math mode symbols for common sets and spaces. Example usage: $\R$
+\newcommand{\R}{\mathbb{R}}	% Real numbers
+\newcommand{\C}{\mathbb{C}}	% Complex numbers
+\newcommand{\Q}{\mathbb{Q}}	% Rational numbers
+\newcommand{\Z}{\mathbb{Z}}	% Integers
+\newcommand{\N}{\mathbb{N}}	% Natural numbers
+\newcommand{\F}{\mathcal{F}}	% Calligraphic F for a sigma algebra
+\newcommand{\El}{\mathcal{L}}	% Calligraphic L, e.g. for L^p spaces
+
+% Math mode symbols for probability
+\newcommand{\pr}{\mathbb{P}}	% Probability measure
+\newcommand{\E}{\mathbb{E}}	% Expectation, e.g. $\E(X)$
+\newcommand{\var}{\text{Var}}	% Variance, e.g. $\var(X)$
+\newcommand{\cov}{\text{Cov}}	% Covariance, e.g. $\cov(X,Y)$
+\newcommand{\corr}{\text{Corr}}	% Correlation, e.g. $\corr(X,Y)$
+\newcommand{\B}{\mathcal{B}}	% Borel sigma-algebra
+
+% Other miscellaneous symbols
+\newcommand{\tth}{\text{th}}	% Non-italicized 'th', e.g. $n^\tth$
+\newcommand{\Oh}{\mathcal{O}}	% Big-O notation, e.g. $\O(n)$
+\newcommand{\1}{\mathds{1}}	% Indicator function, e.g. $\1_A$
+
+% Additional commands for math mode
+\DeclareMathOperator*{\argmax}{argmax}	% Argmax, e.g. $\argmax_{x\in[0,1]} f(x)$
+\DeclareMathOperator*{\argmin}{argmin}	% Argmin, e.g. $\argmin_{x\in[0,1]} f(x)$
+\DeclareMathOperator*{\spann}{Span}	% Span, e.g. $\spann\{X_1,...,X_n\}$
+\DeclareMathOperator*{\bias}{Bias}	% Bias, e.g. $\bias(\hat\theta)$
+\DeclareMathOperator*{\ran}{ran}		% Range of an operator, e.g. $\ran(T) 
+\DeclareMathOperator*{\dv}{d\!}		% Non-italicized 'with respect to', e.g. $\int f(x) \dv x$
+\DeclareMathOperator*{\diag}{diag}	% Diagonal of a matrix, e.g. $\diag(M)$
+\DeclareMathOperator*{\trace}{trace}	% Trace of a matrix, e.g. $\trace(M)$
+\DeclareMathOperator*{\supp}{supp}	% Support of a function, e.g., $\supp(f)$
+
+% --- Presentation begins here ---
+
+\begin{document}
+
+% --- Title slide ---
+
+\title{\color{titleText}{\Large Introduction to \\[.7em]\includegraphics[width=5cm]{Logo}\\ for statistics and probability}}
+\author{\textbf{Cornell Statistics Graduate Society}\\Sara Venkatraman}
+\date{}
+
+\begin{frame}
+\vspace{1.2cm}\titlepage
+\end{frame}
+
+% --- Main content ---
+
+% Example slide: use \pause to sequentially unveil content
+\begin{frame}{Outline}
+\begin{enumerate}
+\item What is Mathematica and why should you use it?
+\item How to obtain Mathematica
+\item Live demo
+\item Example of Mathematica in research
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{What is Mathematica?}
+\begin{itemize}
+\item Mathematica is a \textbf{symbolic} computing system: can manipulate mathematical expressions, unlike R or Python
+\item Uses the Wolfram programming language
+\item Example: let $f(x,\theta) = (\theta x^3 + 1)^{-1}$. What is $\partial f/\partial x$?
+\end{itemize}
+\begin{figure}[H]
+\centering\fbox{\includegraphics[width=8cm]{DerivExample}}	
+\end{figure}
+\end{frame}
+
+\begin{frame}{What is Mathematica?}
+For statisticians, I think Mathematica is very useful for:	
+\begin{itemize}
+\item Verifying tedious calculus: derivatives, integrals, etc.
+\item Analytically solving complicated equations
+\item Working with random variables {\scriptsize (not realizations of them)}
+\end{itemize}\vspace{.5cm}
+
+I think Mathematica is less useful for:
+\begin{itemize}
+\item Working with and visualizing real data	
+\item Larger and potentially open-source software
+\end{itemize}
+\end{frame}
+
+\begin{frame}{How to get Mathematica}
+\begin{itemize}
+\item \$35 for one-year license (Aug. 1 - July 31) from Cornell IT; also includes Mathematica Online and WolframAlpha Pro: {\color{RoyalBlue}\url{https://it.cornell.edu/software-licensing/mathematica-licensing}}\\[1em]
+\item 15-day free trial: {\color{RoyalBlue}\url{https://www.wolfram.com/mathematica/trial/}}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{center}\Large\color{titleText}Live Mathematica demo\end{center}	
+\end{frame}
+
+\begin{frame}{Mathematica in my research}
+
+{\small A Bayesian approach to regression:
+\begin{itemize}
+\item Consider the model $\b Y = \b X\bg\beta + \bg\varepsilon$, with $\bg\varepsilon \sim N(\b 0,\sigma^2 \b I_n)$. 
+\item Put a $N(\bg\beta_0,\sigma^2\b V_0)$ prior on $\bg\beta$, where $\b V_0$ is some p.s.d. matrix.
+\item What should $\b V_0$ be? Let's say $\b V_0 = g(\b X^T \b X)^{-1}$, for some $g>0$
+\item Then the posterior mean of $\bg\beta$ is:
+$$\E(\bg\beta|\b Y,\sigma^2) = \frac{1}{1+g}\bg\beta_0 + \frac{g}{1+g}\bg{\hat\beta}$$
+where $\bg{\hat\beta}$ is the usual least-squares estimate!
+\item \textbf{What I want to know: How do we choose $g$?}
+\end{itemize}}
+\end{frame}
+
+\begin{frame}{Mathematica in my research (continued)}
+
+{\small We could try solving for $g$ that minimizes sum of squared residuals,\\[.5em] $\|\b Y - \b{\hat Y}\|^2$, where $\b{\hat Y} = \b X(\frac{1}{1+g}\bg\beta_0+\frac{g}{1+g}\bg{\hat\beta}$).\\[1em]
+
+After some algebra, I can write this as:
+{\scriptsize\begin{align*}
+\text{SSR}(g)=\|\b Y - \b{\hat Y}\|^2 &= a-\frac{2b}{1+g}-\frac{2gc}{1+g}+\frac{d}{(1+g)^2}+\frac{2gb}{(1+g)^2}+\frac{g^2c}{(1+g)^2}
+\end{align*}}
+where $a=\|\b Y\|^2$, $b=\b Y^T\b Y_0$, $c=\|\bg{\hat\beta}\|^2$, $d=\|\b Y_0\|^2$, $\b Y_0 = \b X\bg\beta_0$.
+\begin{figure}[H]
+\centering\fbox{\includegraphics[width=10cm]{SSR}}	
+\end{figure}
+Turns out there are no minimizing values of $g$... ~ :(
+}
+\end{frame}
+
+\begin{frame}{Mathematica in my research (continued)}
+	
+{\small Instead let's minimize \textit{Stein's unbiased risk estimate} (SURE), given by:\\[.5em] 
+$\|\b Y - \b X\bg{\hat\beta}\|^2 + \frac{2gp\hat\sigma^2}{1+g}-n\hat\sigma^2$.\\[1em]
+
+After some algebra, I can write this as:
+{\scriptsize\begin{align*}
+\text{SURE}(g)= a-\frac{2b}{1+g}-\frac{2gc}{1+g}+\frac{d}{(1+g)^2}+\frac{2gb}{(1+g)^2}+\frac{g^2c}{(1+g)^2}+\frac{2gp\hat\sigma^2}{1+g}-n\hat\sigma^2
+\end{align*}}\\[-1em]
+\begin{figure}[H]
+\centering\fbox{\includegraphics[width=10cm]{SURE}}	
+\end{figure}
+Now we have a solution; let's check that it's indeed a minimizer.}
+\end{frame}
+
+\begin{frame}{Mathematica in my research (continued)}
+
+\begin{figure}[H]
+\centering\fbox{\includegraphics[width=10cm]{SURE2}}	
+\end{figure}
+Now all I need to do is prove that this quantity is positive.
+\end{frame}
+
+
+% --- Thank you slide ---
+
+\begin{frame}
+\begin{center}
+{\Large\color{titleText} Thank you for listening!\\[2em]}
+
+All the things Mathematica can do are\\ documented here, with examples:\\ {\color{RoyalBlue}\url{https://reference.wolfram.com/language/}}
+\end{center}
+\end{frame}
+
+% --- Presentation ends here ---
+
+\end{document}
